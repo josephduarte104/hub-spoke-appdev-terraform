@@ -6,11 +6,13 @@ variable "name" {
 variable "client_id" {
   description = "Service principal id"
   type        = string
+  default     = "70c2ce94-4a30-4565-af82-9e0e56c47723"
 }
 
 variable "client_secret" {
   description = "Service principal password"
   type        = string
+  default     = "6IucAqke9~~.24AQPJp1oxg62zn_Hhu8Q7"
 }
 
 variable "container_registry_id" {

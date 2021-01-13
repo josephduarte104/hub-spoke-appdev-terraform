@@ -7,6 +7,6 @@ terraform {
     key                  = "prod-aks-hub.terraform.tfstate"
     # rather than defining this inline, the Access Key can also be sourced
     # from an Environment Variable - more information is available below.
-    access_key = "gsMqClBRKfsEpJuzCXYZwBupCm+Moc+JFgdtDLEumSD0XXPSw2oMadAlwJmMv6MjC1dI6Ps1L2CyX080/w9oQQ=="
+    access_key = "paramatize from keyvault"
   }
 }

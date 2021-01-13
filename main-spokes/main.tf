@@ -100,22 +100,22 @@ module "jumpbox" {
 }
 
 
-resource "azuread_application" "aks-app" {
-  name                       = "${local.prefix}-aks-sp"
-  available_to_other_tenants = false
-  oauth2_allow_implicit_flow = true
-}
+#resource "azuread_application" "aks-app" {
+#  name                       = "${local.prefix}-aks-sp"
+ # available_to_other_tenants = false
+ # oauth2_allow_implicit_flow = true
+#}
 
-resource "azuread_service_principal" "aks-sp" {
-  application_id               = azuread_application.aks-app.application_id
-  app_role_assignment_required = false
-}
+#resource "azuread_service_principal" "aks-sp" {
+#  application_id               = azuread_application.aks-app.application_id
+#  app_role_assignment_required = false
+#}
 
-resource "azuread_service_principal_password" "aks-sp-passwd" {
-  service_principal_id = azuread_service_principal.aks-sp.id
-  value                = random_string.random.result
-  end_date             = "2021-01-01T01:02:03Z" 
-}
+#resource "azuread_service_principal_password" "aks-sp-passwd" {
+ # service_principal_id = azuread_service_principal.aks-sp.id
+ # value                = random_string.random.result
+ # end_date             = "2021-01-01T01:02:03Z" 
+#}
 
 # resource "tls_private_key" "ca" {
 #   algorithm = "ECDSA"
@@ -147,25 +147,25 @@ resource "azuread_service_principal_password" "aks-sp-passwd" {
 #   end_date_relative    = "8759h"
 # }
 
-resource "azurerm_role_assignment" "contributor" {
-  scope                       = azurerm_resource_group.app1-rg.id 
-  role_definition_name        = "Contributor"
-  principal_id                = azuread_service_principal.aks-sp.id
-}
+#resource "azurerm_role_assignment" "contributor" {
+#  scope                       = azurerm_resource_group.app1-rg.id 
+#  role_definition_name        = "Contributor"
+#  principal_id                = azuread_service_principal.aks-sp.id
+#}
 
-output "app-sp-id" {
-  description = "Appid of SP"
-  value       = azuread_service_principal.aks-sp.application_id
-}
+#output "app-sp-id" {
+#  description = "Appid of SP"
+#  value       = azuread_service_principal.aks-sp.application_id
+#}
 
-output "app-sp-password" {
-  description = "Password of SP"
-  value       = azuread_service_principal_password.aks-sp-passwd.value
-}
+#output "app-sp-password" {
+#  description = "Password of SP"
+#  value       = azuread_service_principal_password.aks-sp-passwd.value
+#}
 
-# output "ssh_command" {
-#  value = "ssh ${module.jumpbox.jumpbox_username}@${module.jumpbox.jumpbox_ip}"
-# }
+output "ssh_command" {
+ value = "ssh ${module.jumpbox.jumpbox_username}@${module.jumpbox.jumpbox_ip}"
+}
 
 output "jumpbox_password" {
  description = "Jumpbox Admin Passowrd"

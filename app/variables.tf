@@ -43,11 +43,13 @@ variable "drain_blue_pool" {
 variable "az_sp_app_id" {
   type = string
   description = "Azure service principal app id"
+  default = "70c2ce94-4a30-4565-af82-9e0e56c47723"
 }
 
 variable "az_sp_password" {
   type = string
   description = "Azure service principal secret"
+  default = "6IucAqke9~~.24AQPJp1oxg62zn_Hhu8Q7"
 }
 
 variable "app_rg" {

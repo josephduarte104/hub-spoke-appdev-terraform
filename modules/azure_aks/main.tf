@@ -42,8 +42,8 @@ resource "azurerm_kubernetes_cluster" "modaks" {
   }
   
   service_principal {
-    client_id                     = var.client_id 
-    client_secret                 = var.client_secret
+    client_id                     = "70c2ce94-4a30-4565-af82-9e0e56c47723"
+    client_secret                 = "paramatize from keyvault"
   }
   role_based_access_control {
     enabled = true
